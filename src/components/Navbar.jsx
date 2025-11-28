@@ -223,9 +223,9 @@ const Navbar = () => {
               <div className="p-6 bg-gray-50 border-t border-gray-100">
                 <p className="text-xs text-slate-400 font-['Inter'] mb-3 text-center uppercase tracking-widest">Connect With Us</p>
                 <div className="flex justify-center gap-6">
-                  <SocialIcon Icon={Facebook} href="#" color="#004AAD" mobile />
-                  <SocialIcon Icon={Linkedin} href="#" color="#004AAD" mobile />
-                  <SocialIcon Icon={Youtube} href="#" color="#FF0000" mobile />
+                  <SocialIcon Icon={Facebook} href="https://www.facebook.com/englishcarnivalbangladesh" color="#004AAD" mobile />
+                  <SocialIcon Icon={Linkedin} href="https://www.linkedin.com/company/english-carnival-bangladesh/" color="#004AAD" mobile />
+                  <SocialIcon Icon={Youtube} href="https://www.youtube.com/@englishcarnivalbangladesh" color="#FF0000" mobile />
                 </div>
               </div>
             </motion.div>

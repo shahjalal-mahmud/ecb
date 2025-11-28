@@ -18,8 +18,8 @@ function App() {
       <main>
         <Hero onRegisterClick={() => setIsRegistrationOpen(true)} />
         <LatestNews />
-        <MissionGrid />
         <CEOMessage />
+        <MissionGrid />
         <EventsPreview />
         <CTABand onRegisterClick={() => setIsRegistrationOpen(true)} />
       </main>

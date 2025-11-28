@@ -8,6 +8,7 @@ import EventsPreview from './components/EventsPreview'
 import CTABand from './components/CTABand'
 import Footer from './components/Footer'
 import RegistrationModal from './components/RegistrationModal'
+import CampusAmbassadorSection from './components/CampusAmbassadorSection'
 
 function App() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
@@ -19,6 +20,7 @@ function App() {
         <Hero onRegisterClick={() => setIsRegistrationOpen(true)} />
         <LatestNews />
         <CEOMessage />
+        <CampusAmbassadorSection />
         <MissionGrid />
         <EventsPreview />
         <CTABand onRegisterClick={() => setIsRegistrationOpen(true)} />

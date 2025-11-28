@@ -98,7 +98,7 @@ const Navbar = () => {
           >
             {/* Using object-contain to prevent distortion as requested */}
             <img 
-              src="/public/ecb-logo-165x75.png" 
+              src="/ecb-logo-165x75.png" 
               alt="ECB Logo" 
               className="h-12 md:h-14 w-auto object-contain transition-all duration-300"
             />

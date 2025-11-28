@@ -1,104 +1,188 @@
-import React from 'react'
-import { useInView } from 'react-intersection-observer'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Users, Zap } from 'lucide-react'; // Using Lucide for clean, academic icons
 
-const Hero = ({ onRegisterClick }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+const Hero = () => {
+  // Brand Colors
+  const colors = {
+    royalBlue: '#004AAD',
+    orangeAccent: '#FF6B00',
+    deepBlueHover: '#1E40AF',
+    softBlueWhite: '#F4F7FF',
+    mutedGray: '#64748B',
+    cleanWhite: '#FFFFFF',
+  };
+
+  // Framer Motion Variants for Staggered Fade-In
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15, // Delay between each child animation
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+      },
+    },
+  };
+
+  // Framer Motion Variants for Floating Shapes (Adds global/innovative vibe)
+  const floatingVariants = {
+    float: {
+      y: [0, -10, 0],
+      rotate: [0, 5, -5, 0],
+      transition: {
+        duration: 8,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'reverse',
+      },
+    },
+  };
 
   return (
     <section 
-      id="home"
-      className="min-h-screen relative flex items-center justify-center overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.8) 0%, rgba(236, 72, 153, 0.6) 100%), url("/hero-bg.jpg") center/cover'
-      }}
+      className="relative min-h-[90vh] md:min-h-screen bg-gradient-to-br from-[#F4F7FF] to-white overflow-hidden flex items-center"
+      // Academic, soft gradient background
     >
-      {/* Decorative SVG Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <svg className="absolute top-10 left-10 w-20 h-20 text-ecb-yellow/20" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" fill="none" />
-        </svg>
-        <svg className="absolute bottom-20 right-20 w-16 h-16 text-ecb-pink/20" viewBox="0 0 100 100">
-          <polygon points="50,10 90,90 10,90" stroke="currentColor" strokeWidth="2" fill="none" />
-        </svg>
-        <svg className="absolute top-1/3 right-1/4 w-12 h-12 text-ecb-violet/20" viewBox="0 0 100 100">
-          <rect x="10" y="10" width="80" height="80" stroke="currentColor" strokeWidth="2" fill="none" />
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div 
-          ref={ref}
-          className={`transition-all duration-700 ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-poppins font-bold text-white mb-6 leading-tight">
-            English Carnival
-            <span className="block text-ecb-yellow">Bangladesh</span>
-          </h1>
-          
-          {/* Tagline */}
-          <p className="text-xl md:text-2xl lg:text-3xl font-inter font-semibold text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Empowering Young Minds Through English
-          </p>
-          
-          {/* Supporting Text */}
-          <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Join national events, build confidence, and connect with global opportunities. 
-            Be part of Bangladesh's premier English education movement.
-          </p>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <button 
-              onClick={onRegisterClick}
-              className="btn btn-lg btn-gradient text-lg px-8 py-4 font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg"
-            >
-              Participate Now
-            </button>
-            <button className="btn btn-lg btn-outline-primary text-lg px-8 py-4 font-semibold text-white border-white hover:bg-white hover:text-ecb-violet transform hover:scale-105 transition-all duration-200">
-              Join the Team
-            </button>
-          </div>
-          
-          {/* Latest News Ticker */}
-          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center space-x-4">
-              <span className="font-semibold text-white text-sm uppercase tracking-wider">
-                Latest News:
-              </span>
-              <div className="flex-1 overflow-hidden">
-                <div className="animate-marquee whitespace-nowrap">
-                  <span className="text-white text-sm mx-4">
-                    🎉 National English Olympiad 2024 registration is now open!
-                  </span>
-                  <span className="text-white text-sm mx-4">
-                    📢 Call for volunteers for upcoming regional events
-                  </span>
-                  <span className="text-white text-sm mx-4">
-                    🏆 Winners of the 2023 Speech Competition announced
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* ----------------------------------------------------
+        1. BACKGROUND VISUALS & ANIMATED SHAPES
+        ---------------------------------------------------- 
+      */}
       
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="animate-bounce">
-          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+      {/* Abstract Animated Floating Blobs */}
+      <motion.div 
+        className="absolute top-[5%] left-[10%] w-48 h-48 bg-[#FF6B00]/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50"
+        variants={floatingVariants}
+        animate="float"
+      />
+      <motion.div 
+        className="absolute bottom-[15%] right-[5%] w-60 h-60 bg-[#004AAD]/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50"
+        variants={floatingVariants}
+        animate="float"
+        style={{ animationDelay: '2s' }}
+      />
+
+      {/* Hero Content Wrapper */}
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 w-full relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          
+          {/* ----------------------------------------------------
+            2. LEFT SIDE: TEXT CONTENT & CTAS
+            ---------------------------------------------------- 
+          */}
+          <motion.div
+            className="lg:w-1/2 text-center lg:text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Title */}
+            <motion.h1 
+              className="text-5xl md:text-6xl xl:text-7xl font-['Poppins'] font-extrabold mb-3 leading-tight"
+              style={{ color: colors.royalBlue }}
+              variants={itemVariants}
+            >
+              English Carnival <br className="hidden md:inline" /> Bangladesh
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p 
+              className="text-xl md:text-2xl font-['Inter'] font-semibold mb-6 tracking-wide"
+              style={{ color: colors.orangeAccent }}
+              variants={itemVariants}
+            >
+              Empowering Young Minds Through English — Learn, Connect & Grow!
+            </motion.p>
+
+            {/* Body Description */}
+            <motion.p 
+              className="text-lg md:text-xl mb-10 max-w-xl mx-auto lg:mx-0"
+              style={{ color: colors.mutedGray }}
+              variants={itemVariants}
+            >
+              “Join Bangladesh’s biggest English learning movement — uniting students, educators, and young leaders nationwide.”
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div 
+              className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
+              variants={itemVariants}
+            >
+              {/* Primary CTA: Participate Now */}
+              <motion.a
+                href="/participate"
+                whileHover={{ scale: 1.05, boxShadow: '0 8px 25px rgba(0, 74, 173, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
+                className="btn btn-lg px-8 rounded-full text-white font-['Poppins'] font-bold tracking-wider transition-all duration-300 shadow-xl"
+                style={{ backgroundColor: colors.royalBlue, borderColor: colors.royalBlue }}
+              >
+                <Zap size={20} />
+                Participate Now
+              </motion.a>
+
+              {/* Secondary CTA: Join the Team (Outline Style) */}
+              <motion.a
+                href="/team-join"
+                whileHover={{ backgroundColor: colors.royalBlue, color: colors.cleanWhite, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn btn-lg px-8 rounded-full font-['Poppins'] font-semibold tracking-wider transition-all duration-300"
+                style={{ 
+                  color: colors.royalBlue, 
+                  borderColor: colors.royalBlue, 
+                  backgroundColor: colors.cleanWhite,
+                }}
+              >
+                <Users size={20} />
+                Join the Team
+              </motion.a>
+            </motion.div>
+          </motion.div>
+
+          {/* ----------------------------------------------------
+            3. RIGHT SIDE: VISUAL (Image with Animation & Overlay)
+            ---------------------------------------------------- 
+          */}
+          <motion.div 
+            className="lg:w-1/2 w-full mt-10 lg:mt-0 relative aspect-video lg:aspect-auto max-w-lg lg:max-w-none"
+            initial={{ x: 50, opacity: 0, scale: 0.9 }}
+            animate={{ x: 0, opacity: 1, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 50, delay: 0.4 }}
+          >
+            {/* The Image */}
+            <img 
+              src="/ecb-hero-bg.png" 
+              alt="English Carnival Bangladesh event photo" 
+              className="w-full h-full object-cover rounded-3xl shadow-2xl shadow-blue-900/20"
+            />
+            
+            {/* Semi-Transparent Gradient Overlay for Readability/Style */}
+            <div 
+              className="absolute inset-0 rounded-3xl opacity-40"
+              style={{ background: `linear-gradient(135deg, ${colors.royalBlue} 0%, ${colors.orangeAccent} 100%)` }}
+            />
+            
+            {/* International-style Overlay Text */}
+            <div className="absolute top-6 right-6 px-4 py-1.5 bg-white/70 backdrop-blur-sm rounded-full shadow-lg">
+              <span className="font-['Poppins'] text-sm md:text-base font-bold" style={{ color: colors.royalBlue }}>
+                #NationalMovement
+              </span>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import LatestNews from './components/LatestNews'
-import MissionGrid from './components/MissionGrid'
 import CEOMessage from './components/CEOMessage'
 import EventsPreview from './components/EventsPreview'
 import CTABand from './components/CTABand'
 import Footer from './components/Footer'
 import RegistrationModal from './components/RegistrationModal'
 import CampusAmbassadorSection from './components/CampusAmbassadorSection'
+import Mission from './components/Mission'
+import Vision from './components/Vision'
 
 function App() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
@@ -21,7 +22,8 @@ function App() {
         <LatestNews />
         <CEOMessage />
         <CampusAmbassadorSection />
-        <MissionGrid />
+        <Mission />
+        <Vision />
         <EventsPreview />
         <CTABand onRegisterClick={() => setIsRegistrationOpen(true)} />
       </main>

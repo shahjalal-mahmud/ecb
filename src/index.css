@@ -139,3 +139,17 @@
 .animation-delay-600 {
   animation-delay: 0.6s;
 }
+@keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 40s linear infinite;
+        }
+        .hover\:animation-pause:hover {
+          animation-play-state: paused;
+        }

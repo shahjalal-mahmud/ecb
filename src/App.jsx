@@ -3,7 +3,6 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import LatestNews from './components/LatestNews'
 import CEOMessage from './components/CEOMessage'
-import EventsPreview from './components/EventsPreview'
 import CTABand from './components/CTABand'
 import Footer from './components/Footer'
 import RegistrationModal from './components/RegistrationModal'
@@ -11,6 +10,7 @@ import CampusAmbassadorSection from './components/CampusAmbassadorSection'
 import Mission from './components/Mission'
 import Vision from './components/Vision'
 import Objectives from './components/Objectives'
+import Partners from './components/Partners'
 
 function App() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
@@ -26,7 +26,7 @@ function App() {
         <Mission />
         <Vision />
         <Objectives />
-        <EventsPreview />
+        <Partners />
         <CTABand onRegisterClick={() => setIsRegistrationOpen(true)} />
       </main>
       <Footer />

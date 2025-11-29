@@ -10,6 +10,7 @@ import RegistrationModal from './components/RegistrationModal'
 import CampusAmbassadorSection from './components/CampusAmbassadorSection'
 import Mission from './components/Mission'
 import Vision from './components/Vision'
+import Objectives from './components/Objectives'
 
 function App() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
@@ -24,6 +25,7 @@ function App() {
         <CampusAmbassadorSection />
         <Mission />
         <Vision />
+        <Objectives />
         <EventsPreview />
         <CTABand onRegisterClick={() => setIsRegistrationOpen(true)} />
       </main>
